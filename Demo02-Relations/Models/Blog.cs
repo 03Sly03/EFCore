@@ -15,6 +15,6 @@ namespace Demo02_Relations.Models
         public string? SiteUri { get; set; }
         public List<Post>? Posts { get; set;} = new List<Post>();
         public BlogHeader? Header { get; set; }
-        public List<BlogTag>? BlogTags { get; set;} = new List<BlogTag>();
+        public List<BlogTag> BlogTags { get; set;} = new List<BlogTag>();
     }
 }

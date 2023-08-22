@@ -12,7 +12,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Éléments de solution", "�
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exercice01-Adresses", "Exercice01-Adresses\Exercice01-Adresses.csproj", "{69598DD1-8566-4BD4-9EF9-CEC1F65B9B97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo02-Relations", "Demo02-Relations\Demo02-Relations.csproj", "{368C85C0-4E28-4881-BC28-45BE052C309C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo02-Relations", "Demo02-Relations\Demo02-Relations.csproj", "{368C85C0-4E28-4881-BC28-45BE052C309C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercice02-Hotel", "Exercice02-Hotel\Exercice02-Hotel.csproj", "{CA05FD09-E397-4D9B-A767-EB9571C5E9C0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +34,10 @@ Global
 		{368C85C0-4E28-4881-BC28-45BE052C309C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{368C85C0-4E28-4881-BC28-45BE052C309C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{368C85C0-4E28-4881-BC28-45BE052C309C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA05FD09-E397-4D9B-A767-EB9571C5E9C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA05FD09-E397-4D9B-A767-EB9571C5E9C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA05FD09-E397-4D9B-A767-EB9571C5E9C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA05FD09-E397-4D9B-A767-EB9571C5E9C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
