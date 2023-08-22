@@ -3,6 +3,7 @@ using Exercice01_Adresses.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Exercice01_Adresses.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230822074822_TablesAndColumnsNameChanged")]
+    partial class TablesAndColumnsNameChanged
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,31 +33,26 @@ namespace Exercice01_Adresses.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("AdditionalAddress")
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)")
+                        .HasColumnType("nvarchar(max)")
                         .HasColumnName("additional_address");
 
                     b.Property<string>("City")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)")
+                        .HasColumnType("nvarchar(max)")
                         .HasColumnName("city");
 
                     b.Property<string>("PostalCode")
                         .IsRequired()
-                        .HasMaxLength(5)
-                        .HasColumnType("nvarchar(5)")
+                        .HasColumnType("nvarchar(max)")
                         .HasColumnName("postal_code");
 
                     b.Property<string>("StreetName")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)")
+                        .HasColumnType("nvarchar(max)")
                         .HasColumnName("street_name");
 
-                    b.Property<string>("StreetNumber")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)")
+                    b.Property<int>("StreetNumber")
+                        .HasColumnType("int")
                         .HasColumnName("street_number");
 
                     b.HasKey("Id");
@@ -69,7 +66,7 @@ namespace Exercice01_Adresses.Migrations
                             City = "Maz",
                             PostalCode = "62670",
                             StreetName = "rue de la sorbonne",
-                            StreetNumber = "15"
+                            StreetNumber = 15
                         },
                         new
                         {
@@ -77,7 +74,7 @@ namespace Exercice01_Adresses.Migrations
                             City = "Paris",
                             PostalCode = "75000",
                             StreetName = "Avenue du poulet",
-                            StreetNumber = "45"
+                            StreetNumber = 45
                         },
                         new
                         {
@@ -85,7 +82,7 @@ namespace Exercice01_Adresses.Migrations
                             City = "Marseille",
                             PostalCode = "13000",
                             StreetName = "rue Victor Hugo",
-                            StreetNumber = "12"
+                            StreetNumber = 12
                         },
                         new
                         {
@@ -93,7 +90,7 @@ namespace Exercice01_Adresses.Migrations
                             City = "Lens",
                             PostalCode = "62800",
                             StreetName = "Boulevard des coqs",
-                            StreetNumber = "22"
+                            StreetNumber = 22
                         },
                         new
                         {
@@ -101,7 +98,7 @@ namespace Exercice01_Adresses.Migrations
                             City = "Arras",
                             PostalCode = "62000",
                             StreetName = "rue du sapin",
-                            StreetNumber = "15"
+                            StreetNumber = 15
                         },
                         new
                         {
@@ -109,7 +106,7 @@ namespace Exercice01_Adresses.Migrations
                             City = "Lille",
                             PostalCode = "59000",
                             StreetName = "rue des choux",
-                            StreetNumber = "58"
+                            StreetNumber = 58
                         },
                         new
                         {
@@ -117,7 +114,7 @@ namespace Exercice01_Adresses.Migrations
                             City = "Maz",
                             PostalCode = "62670",
                             StreetName = "rue Vigny",
-                            StreetNumber = "89"
+                            StreetNumber = 89
                         });
                 });
 #pragma warning restore 612, 618

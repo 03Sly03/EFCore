@@ -39,13 +39,19 @@ namespace Exercice01_Adresses.Classes
                         DisplayAdressList(context);
                         DeleteAddress(context);
                         Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("L'adresse a bien été supprimé\n");
+                        Console.ResetColor();
                         break;
                     case "0":
+                        Console.ForegroundColor= ConsoleColor.Blue;
                         Console.WriteLine("Fermage de l'application !");
+                        Console.ResetColor();
                         return;
                     default:
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Erreur de saisie !");
+                        Console.ResetColor();
                         break;
                 }
             } while (true);
@@ -58,7 +64,7 @@ namespace Exercice01_Adresses.Classes
 
         public static void DisplayMenu()
         {
-            Console.Write(@"=== MENU PRINCIPAL ===
+            Console.Write(@"        === MENU PRINCIPAL ===
 
     1. Voir les adresses
     2. Ajouter une adresses
@@ -73,7 +79,7 @@ Votre choix : ");
         {
             do
             {
-                Console.Write(@"=== Ajout d'une adresse ===
+                Console.Write(@"        === Ajout d'une adresse ===
 
     1. Ajouter une adresse
     2. Retour au menu
@@ -95,7 +101,9 @@ Votre choix : ");
                         return;
 
                     default:
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Erreur de saisie !");
+                        Console.ResetColor();
                         break;
                 }
 
@@ -105,14 +113,9 @@ Votre choix : ");
 
         public static void AddAdress(ApplicationDbContext context)
         {
-            int streetNumber;
-
-            Console.WriteLine("=== AJOUTER UNE ADRESSE ===\n");
+            Console.WriteLine("\t\t=== AJOUTER UNE ADRESSE ===\n");
             Console.Write("Veuillez entrer le numéro de voie : ");
-            while (!int.TryParse(Console.ReadLine(), out streetNumber))
-            {
-                Console.Write("Erreur de saisie ! veuillez recommencer : ");
-            };
+            string streetNumber = Console.ReadLine()!;
 
             Console.Write("Veuillez entrer l'intitulé de voie : ");
             string streetName = Console.ReadLine()!;
@@ -147,7 +150,7 @@ Votre choix : ");
 
         public static void DisplayAddress(ApplicationDbContext context)
         {
-            Console.WriteLine("=== TOUTES LES ADRESSES ===\n");
+            Console.WriteLine("\t\t=== TOUTES LES ADRESSES ===\n");
             DisplayAdressList(context);
             Console.WriteLine();
         }
@@ -156,7 +159,7 @@ Votre choix : ");
         {
             int adressIdToUpdate;
 
-            Console.WriteLine("=== EDITER UNE ADRESSE ===\n");
+            Console.WriteLine("\t\t=== EDITER UNE ADRESSE ===\n");
             DisplayAdressList(context);
             Console.Write("\nSaisissez l'id de l'adresse que vous souhaitez modifier : ");
             while (!int.TryParse(Console.ReadLine()!, out adressIdToUpdate))
@@ -166,21 +169,13 @@ Votre choix : ");
             Address addressToUpdate = context.Adresses.Find(adressIdToUpdate)!;
 
             string userInput;
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("\n--- Appuyez sur entrer si vous ne voulez pas modifier le champ ---\n");
+            Console.ResetColor();
             Console.Write("Veuillez entrer le numéro de vois : ");
             userInput = Console.ReadLine()!;
             if (userInput != "")
-            {
-                int streetNumber;
-                while (!int.TryParse(userInput, out streetNumber))
-                {
-                    Console.Write("Erreur de saisie ! Veuillez recommencer : ");
-                    userInput = Console.ReadLine()!;
-                    if (userInput == "")
-                        break;
-                }
-                addressToUpdate.StreetNumber = streetNumber;
-            }
+                addressToUpdate.StreetNumber = userInput;
             Console.Write("Veuillez entrer l'intitulé de voie : ");
             userInput = Console.ReadLine()!;
             if (userInput != "")

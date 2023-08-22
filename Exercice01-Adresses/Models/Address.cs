@@ -11,13 +11,24 @@ namespace Exercice01_Adresses.Models
     [Table("addresse")]
     internal class Address
     {
+        [Column("id")]
         public int Id { get; set; }
-        public int StreetNumber { get; set; }
+        [Column("street_number")]
+        [StringLength(50)]
+        public string? StreetNumber { get; set; }
+        [Column("street_name")]
+        [StringLength(200)]
         [Required]
         public string? StreetName { get; set; }
+        [Column("additional_address")]
+        [StringLength(150)]
         public string? AdditionalAddress { get; set; }
+        [Column("city")]
+        [StringLength(50)]
         [Required]
         public string? City { get; set; }
+        [Column("postal_code")]
+        [StringLength(5)]
         [Required]
         public string? PostalCode { get; set; }
 

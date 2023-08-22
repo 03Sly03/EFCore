@@ -3,14 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34009.444
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo01", "EFCore\Demo01.csproj", "{2C8ECDF7-9717-4552-A60C-A7EF096A2AC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo01", "EFCore\Demo01.csproj", "{2C8ECDF7-9717-4552-A60C-A7EF096A2AC4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Éléments de solution", "Éléments de solution", "{EEC90A0C-A959-49AE-B27C-ED6E9FD8A15C}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercice01-Adresses", "Exercice01-Adresses\Exercice01-Adresses.csproj", "{69598DD1-8566-4BD4-9EF9-CEC1F65B9B97}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exercice01-Adresses", "Exercice01-Adresses\Exercice01-Adresses.csproj", "{69598DD1-8566-4BD4-9EF9-CEC1F65B9B97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo02-Relations", "Demo02-Relations\Demo02-Relations.csproj", "{368C85C0-4E28-4881-BC28-45BE052C309C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +28,10 @@ Global
 		{69598DD1-8566-4BD4-9EF9-CEC1F65B9B97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69598DD1-8566-4BD4-9EF9-CEC1F65B9B97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69598DD1-8566-4BD4-9EF9-CEC1F65B9B97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{368C85C0-4E28-4881-BC28-45BE052C309C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{368C85C0-4E28-4881-BC28-45BE052C309C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{368C85C0-4E28-4881-BC28-45BE052C309C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{368C85C0-4E28-4881-BC28-45BE052C309C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
