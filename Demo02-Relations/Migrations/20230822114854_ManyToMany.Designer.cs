@@ -4,6 +4,7 @@ using Demo02_Relations.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Demo02_Relations.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230822114854_ManyToMany")]
+    partial class ManyToMany
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,6 +23,21 @@ namespace Demo02_Relations.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("BlogTag", b =>
+                {
+                    b.Property<int>("BlogsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TagsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("BlogsId", "TagsId");
+
+                    b.HasIndex("TagsId");
+
+                    b.ToTable("BlogTag");
+                });
 
             modelBuilder.Entity("Demo02_Relations.Models.Blog", b =>
                 {
@@ -78,29 +95,6 @@ namespace Demo02_Relations.Migrations
                     b.ToTable("BlogHeaders");
                 });
 
-            modelBuilder.Entity("Demo02_Relations.Models.BlogTag", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("BlogId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TagId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BlogId");
-
-                    b.HasIndex("TagId");
-
-                    b.ToTable("BlogTags");
-                });
-
             modelBuilder.Entity("Demo02_Relations.Models.Post", b =>
                 {
                     b.Property<int>("Id")
@@ -139,7 +133,7 @@ namespace Demo02_Relations.Migrations
                             Archived = false,
                             BlogId = 1,
                             Content = "Mon premier post skyblog !!!! <3",
-                            PublishedOn = new DateTime(2023, 8, 22, 14, 8, 47, 585, DateTimeKind.Local).AddTicks(7611),
+                            PublishedOn = new DateTime(2023, 8, 22, 13, 48, 54, 636, DateTimeKind.Local).AddTicks(8659),
                             Title = "Coucou"
                         },
                         new
@@ -148,7 +142,7 @@ namespace Demo02_Relations.Migrations
                             Archived = false,
                             BlogId = 1,
                             Content = "Je suis triste.",
-                            PublishedOn = new DateTime(2023, 8, 22, 14, 8, 47, 585, DateTimeKind.Local).AddTicks(7640),
+                            PublishedOn = new DateTime(2023, 8, 22, 13, 48, 54, 636, DateTimeKind.Local).AddTicks(8691),
                             Title = "Brandon m'a largué..."
                         },
                         new
@@ -157,7 +151,7 @@ namespace Demo02_Relations.Migrations
                             Archived = false,
                             BlogId = 2,
                             Content = "A one-to-many relationship is made up from:\nOne or more primary or alternate key properties on the principal entity; that is the \"one\" end of the relationship. For example, Blog.Id.\nOne or more foreign key properties on the dependent entity; that is the \"many\" end of the relationship. For example, Post.BlogId.\nOptionally, a collection navigation on the principal entity referencing the dependent entities. For example, Blog.Posts.\nOptionally, a reference navigation on the dependent entity referencing the principal entity.",
-                            PublishedOn = new DateTime(2023, 8, 22, 14, 8, 47, 585, DateTimeKind.Local).AddTicks(7643),
+                            PublishedOn = new DateTime(2023, 8, 22, 13, 48, 54, 636, DateTimeKind.Local).AddTicks(8693),
                             Title = "Required one-to-many"
                         });
                 });
@@ -178,6 +172,21 @@ namespace Demo02_Relations.Migrations
                     b.ToTable("Tags");
                 });
 
+            modelBuilder.Entity("BlogTag", b =>
+                {
+                    b.HasOne("Demo02_Relations.Models.Blog", null)
+                        .WithMany()
+                        .HasForeignKey("BlogsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Demo02_Relations.Models.Tag", null)
+                        .WithMany()
+                        .HasForeignKey("TagsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Demo02_Relations.Models.BlogHeader", b =>
                 {
                     b.HasOne("Demo02_Relations.Models.Blog", "Blog")
@@ -187,25 +196,6 @@ namespace Demo02_Relations.Migrations
                         .IsRequired();
 
                     b.Navigation("Blog");
-                });
-
-            modelBuilder.Entity("Demo02_Relations.Models.BlogTag", b =>
-                {
-                    b.HasOne("Demo02_Relations.Models.Blog", "Blog")
-                        .WithMany("BlogTags")
-                        .HasForeignKey("BlogId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Demo02_Relations.Models.Tag", "Tag")
-                        .WithMany("BlogTags")
-                        .HasForeignKey("TagId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Blog");
-
-                    b.Navigation("Tag");
                 });
 
             modelBuilder.Entity("Demo02_Relations.Models.Post", b =>
@@ -221,16 +211,9 @@ namespace Demo02_Relations.Migrations
 
             modelBuilder.Entity("Demo02_Relations.Models.Blog", b =>
                 {
-                    b.Navigation("BlogTags");
-
                     b.Navigation("Header");
 
                     b.Navigation("Posts");
-                });
-
-            modelBuilder.Entity("Demo02_Relations.Models.Tag", b =>
-                {
-                    b.Navigation("BlogTags");
                 });
 #pragma warning restore 612, 618
         }

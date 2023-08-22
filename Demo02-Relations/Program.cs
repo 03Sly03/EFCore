@@ -45,3 +45,31 @@ using var db = new ApplicationDbContext();
 
 /****************************************************************************************************/
 // MANY TO MANY
+
+var listeDeBlogsPourTag = db.Blogs.ToList();
+
+//Tag tagAnimaux = new Tag()
+//{
+//    Name = "Ceci est un blog pour les n'animaux !"
+//};
+
+// ajout d'une relation MANY TO MANY
+
+// SANS model pour la table intermédiaire
+
+//tagAnimaux.Blogs.Add(listeDeBlogsPourTag[0]); // on ajoute un blog dans la liste Blogs du tag
+//db.Tags.Add(tagAnimaux); // on ajoute le tag à la db
+//db.SaveChanges();
+
+var monTag = db.Tags.FirstOrDefault();
+
+BlogTag blogTag = new BlogTag()
+{
+    //BlogId = listeDeBlogsPourTag[0].Id,
+    //TagId = monTag.Id
+    BlogId = 2,
+    TagId = 1
+};
+
+db.BlogTags.Add(blogTag);
+db.SaveChanges();
