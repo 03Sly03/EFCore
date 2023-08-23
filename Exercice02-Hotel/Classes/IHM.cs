@@ -77,6 +77,35 @@ namespace Exercice02_Hotel.Classes
 
         }
 
+
+        // AFFICHAGES & LISTES
+        public static void ClientsList(ApplicationDbContext context)
+        {
+            context.Clients.ToList().ForEach(client => Console.WriteLine("\t" + client));
+        }
+        public static void RoomsList(ApplicationDbContext context)
+        {
+            context.Rooms.ToList().ForEach(room => Console.WriteLine("\t" + room));
+        }
+
+        public static void DisplayClients(ApplicationDbContext context)
+        {
+            Console.WriteLine("\t=== LISTE DES CLIENTS ===\n");
+            ClientsList(context);
+            Console.WriteLine();
+        }
+
+        // CONTROLE DES ID
+        public static bool isClientId(int idToCheck, ApplicationDbContext context)
+        {
+            return context.Clients.Find(idToCheck) != null;
+        }
+        public static bool isRoomId(int idToCheck, ApplicationDbContext context)
+        {
+            return context.Rooms.Find(idToCheck) != null;
+        }
+
+        // AJOUTS
         public static void AddClient(ApplicationDbContext context)
         {
             Console.WriteLine("\t=== AJOUTER UN CLIENT ===\n");
@@ -99,32 +128,6 @@ namespace Exercice02_Hotel.Classes
             context.Clients.Add(newClient);
             context.SaveChanges();
         }
-
-        public static void ClientsList(ApplicationDbContext context)
-        {
-            context.Clients.ToList().ForEach(client => Console.WriteLine("\t" + client));
-        }
-        public static void RoomsList(ApplicationDbContext context)
-        {
-            context.Rooms.ToList().ForEach(room => Console.WriteLine("\t" + room));
-        }
-
-        public static void DisplayClients(ApplicationDbContext context)
-        {
-            Console.WriteLine("\t=== LISTE DES CLIENTS ===\n");
-            ClientsList(context);
-            Console.WriteLine();
-        }
-
-        public static bool isClientId(int idToCheck, ApplicationDbContext context)
-        {
-            return context.Clients.Find(idToCheck) != null;
-        }
-        public static bool isRoomId(int idToCheck, ApplicationDbContext context)
-        {
-            return context.Rooms.Find(idToCheck) != null;
-        }
-
         public static void AddReservation(ApplicationDbContext context)
         {
             Console.WriteLine("\t=== FAIRE UNE RESERVATION ===\n");
