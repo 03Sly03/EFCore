@@ -3,6 +3,7 @@ using Exercice02_Hotel.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Exercice02_Hotel.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230823075546_DataSeedClientsRooms")]
+    partial class DataSeedClientsRooms
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -177,42 +179,42 @@ namespace Exercice02_Hotel.Migrations
                             Id = 2,
                             NumberOfBed = 1,
                             Price = 31.99m,
-                            Status = 1
+                            Status = 2
                         },
                         new
                         {
                             Id = 3,
                             NumberOfBed = 1,
                             Price = 31.99m,
-                            Status = 1
+                            Status = 3
                         },
                         new
                         {
                             Id = 4,
                             NumberOfBed = 1,
                             Price = 31.99m,
-                            Status = 1
+                            Status = 2
                         },
                         new
                         {
                             Id = 5,
                             NumberOfBed = 1,
                             Price = 31.99m,
-                            Status = 1
+                            Status = 2
                         },
                         new
                         {
                             Id = 6,
                             NumberOfBed = 2,
                             Price = 44.99m,
-                            Status = 0
+                            Status = 2
                         },
                         new
                         {
                             Id = 7,
                             NumberOfBed = 2,
                             Price = 44.99m,
-                            Status = 0
+                            Status = 3
                         },
                         new
                         {

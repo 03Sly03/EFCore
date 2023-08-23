@@ -11,9 +11,11 @@ namespace Exercice02_Hotel.Models
     {
         public int Id { get; set; }
         [Column("room_id")]
+        [ForeignKey(nameof(Room))]
         public int RoomId { get; set; }
         public Room? Room { get; set; }
         [Column("reservation_id")]
+        [ForeignKey(nameof(Reservation))]
         public int ReservationId { get; set; }
         public Reservation? Reservation { get; set; }
     }

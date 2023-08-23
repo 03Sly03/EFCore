@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Exercice02_Hotel.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -14,7 +15,7 @@ namespace Exercice02_Hotel.Models
         [Column("id")]
         public int Id { get; set; }
         [Column("status")]
-        public int Status { get; set; }
+        public ReservationStatus Status { get; set; }
         [Column("client_id")]
         public int ClientId { get; set; }
         public Client? Client { get; set; }

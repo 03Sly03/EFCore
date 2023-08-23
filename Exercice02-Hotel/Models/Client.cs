@@ -26,5 +26,10 @@ namespace Exercice02_Hotel.Models
         [Required]
         public string? Phone { get; set; }
         public List<Reservation> Reservations { get; set; } = new List<Reservation>();
+
+        public override string ToString()
+        {
+            return $"{Id} - {Lastname!.ToUpper()} {Firstname} - Tel : {Phone}";
+        }
     }
 }

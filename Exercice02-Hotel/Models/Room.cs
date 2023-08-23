@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Exercice02_Hotel.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -14,7 +15,7 @@ namespace Exercice02_Hotel.Models
         [Column("id")]
         public int Id { get; set; }
         [Column("status")]
-        public int Status { get; set; }
+        public RoomStatus Status { get; set; }
         [Column("number_of_bed")]
         [Required]
         public int NumberOfBed { get; set; }
@@ -23,5 +24,10 @@ namespace Exercice02_Hotel.Models
         public decimal Price { get; set; }
         [Column("client_id")]
         public List<ReservationRoom> ReservationRooms { get; set; } = new List<ReservationRoom>();
+
+        public override string ToString()
+        {
+            return $"{Id} - Nombre de lit : {NumberOfBed}, Prix : {Price} - {Status}";
+        }
     }
 }
